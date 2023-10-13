@@ -13,7 +13,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <Link to="/" className="navbar-logo">
-          NHI FOREST
+          KHANG FOREST
           <Icons.FaTree />
         </Link>
         <ul className="nav-items">
