@@ -1,32 +1,46 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/Navbar.css";
+import * as Icons from "react-icons/fa";
+import "./Navbar.css";
+import { navItems } from "./NavItems";
+import Button from "./Button";
+import Dropdown from "./Dropdown";
 
 function Navbar() {
-  const [openLinks, setOpenLinks] = useState(false);
-
-  const toggleNavbar = () => {
-    setOpenLinks(!openLinks);
-  };
+  const [dropdown, setDropdown] = useState(false);
 
   return (
-    <div className="navbar">
-      <div className="leftSide" id={openLinks ? "open" : "close"}>
-        <h1 className="h1"> Pizza cua Khang</h1>
-        <div className="hiddenLinks">
-          <Link to="/"> Home </Link>
-          <Link to="/about"> About </Link>
-          <Link to="/contact"> Contact </Link>
-        </div>
-        
-      </div>
-      <div className="rightSide">
-        <Link to="/"> Home </Link>
-        <Link to="/about"> About </Link>
-        <Link to="/contact"> Contact </Link>
-        <button onClick={toggleNavbar}>Toggle Navbar</button>
-      </div>
-    </div>
+    <>
+      <nav className="navbar">
+        <Link to="/" className="navbar-logo">
+          NHI FOREST
+          <Icons.FaTree />
+        </Link>
+        <ul className="nav-items">
+          {navItems.map((item) => {
+            if (item.title === "Services") {
+              return (
+                <li
+                  key={item.id}
+                  className={item.cName}
+                  onMouseEnter={() => setDropdown(true)}
+                  onMouseLeave={() => setDropdown(false)}
+                >
+                  <Link to={item.path}>{item.title}</Link>
+                  {dropdown && <Dropdown />}
+                </li>
+              );
+            }
+            return (
+              <li key={item.id} className={item.cName}>
+                <Link to={item.path}>{item.title}</Link>
+              </li>
+            );
+          })}
+        </ul>
+        <Button />
+      </nav>
+    </>
   );
 }
 

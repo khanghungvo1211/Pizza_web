@@ -4,7 +4,7 @@ import "../styles/Footer.css";
 function Footer() {
   return (
     <div className="footer">
-      <p> &copy; {new Date().getFullYear()}; Powered by KhangVo</p>
+      <p> &copy; {new Date().getFullYear()}; Powered by NhiNe</p>
     </div>
   );
 }

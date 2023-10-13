@@ -14,7 +14,10 @@
   padding: 13px 33px;
 
 }
-
+.lower-section {
+  background-color: #f7f7f7; /* Background color for the lower section */
+  padding: 50px; /* Adjust the padding as needed */
+}
 
 .slide {
   position: relative;
